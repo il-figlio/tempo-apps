@@ -11,8 +11,8 @@
 		"deploy": "pnpm build && wrangler deploy",
 		"dev": "VITE_ENABLE_DEMO=true vite dev --port 3000",
 		"gen:tokens-index": "node --experimental-strip-types --env-file=.env scripts/generate-tokens-index.ts",
-		"gen:types": "if [ \"$VERCEL\" = \"1\" ]; then echo 'skipping wrangler types on vercel'; exit 0; else test -f .env || cp .env.example .env; wrangler types; fi",
-		"postinstall": "if [ \"$VERCEL\" = \"1\" ]; then echo 'skipping wrangler postinstall on vercel'; pnpm build; else pnpm gen:types && pnpm build; fi",
+		"gen:types": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler types on vercel'; exit 0; else test -f .env || cp .env.example .env; wrangler types; fi",
+		"postinstall": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler postinstall on vercel'; pnpm build; else pnpm gen:types && pnpm build; fi",
 		"preview": "vite preview",
 		"test": "vitest"
 	},
