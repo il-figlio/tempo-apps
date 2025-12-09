@@ -39,6 +39,16 @@ export const Route = createRootRouteWithContext<{
 				name: 'viewport',
 				content: 'width=device-width, initial-scale=1, maximum-scale=1',
 			},
+			{
+				name: 'description',
+				content:
+					'Explore and analyze blocks, transactions, contracts and more on Tempo.',
+			},
+			{
+				name: 'og:description',
+				content:
+					'Explore and analyze blocks, transactions, contracts and more on Tempo.',
+			},
 		],
 		links: [
 			{
@@ -47,42 +57,24 @@ export const Route = createRootRouteWithContext<{
 			},
 			{
 				rel: 'icon',
-				type: 'image/png',
-				sizes: '16x16',
-				href: '/favicon/favicon-16x16.png',
-				media: '(prefers-color-scheme: light)',
+				type: 'image/svg+xml',
+				href: '/favicon-light.svg',
 			},
 			{
 				rel: 'icon',
-				type: 'image/png',
-				sizes: '16x16',
-				href: '/favicon/favicon-16x16-dark.png',
-				media: '(prefers-color-scheme: dark)',
-			},
-			{
-				rel: 'icon',
-				type: 'image/png',
-				sizes: '32x32',
-				href: '/favicon/favicon-32x32.png',
-				media: '(prefers-color-scheme: light)',
-			},
-			{
-				rel: 'icon',
-				type: 'image/png',
-				sizes: '32x32',
-				href: '/favicon/favicon-32x32-dark.png',
+				type: 'image/svg+xml',
+				href: '/favicon-dark.svg',
 				media: '(prefers-color-scheme: dark)',
 			},
 			{
 				rel: 'apple-touch-icon',
-				sizes: '192x192',
-				href: '/favicon/android-chrome-192x192.png',
-				media: '(prefers-color-scheme: light)',
+				sizes: '180x180',
+				href: '/favicon-light.png',
 			},
 			{
 				rel: 'apple-touch-icon',
-				sizes: '192x192',
-				href: '/favicon/android-chrome-192x192-dark.png',
+				sizes: '180x180',
+				href: '/favicon-dark.png',
 				media: '(prefers-color-scheme: dark)',
 			},
 		],
