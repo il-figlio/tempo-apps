@@ -14,7 +14,7 @@
 		"check:biome": "biome check --write --unsafe",
 		"check:types": "pnpm -r check:types",
 		"gen:types": "pnpm -r gen:types",
-		"postinstall": "pnpm -r postinstall",
+		"postinstall": "pnpm -r postinstall || true",
 		"preview": "pnpm -r preview"
 	},
 	"devDependencies": {

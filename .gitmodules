@@ -1,0 +1,3 @@
+[submodule "lib/signet-sol"]
+	path = lib/signet-sol
+	url = https://github.com/init4tech/signet-sol
