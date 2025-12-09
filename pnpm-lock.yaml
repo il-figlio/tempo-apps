@@ -114,6 +114,9 @@ catalogs:
     react-dom:
       specifier: ^19.2.1
       version: 19.2.1
+    signet-sol:
+      specifier: github:init4tech/signet-sol
+      version: 0.0.0
     tailwind-merge:
       specifier: ^3.4.0
       version: 3.4.0
@@ -160,6 +163,10 @@ catalogs:
 importers:
 
   .:
+    dependencies:
+      signet-sol:
+        specifier: 'catalog:'
+        version: https://codeload.github.com/init4tech/signet-sol/tar.gz/202c882d718a29a8f85b6637f764de54b29e4e07
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'
@@ -3226,6 +3233,10 @@ packages:
 
   siginfo@2.0.0:
     resolution: {integrity: sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==}
+
+  signet-sol@https://codeload.github.com/init4tech/signet-sol/tar.gz/202c882d718a29a8f85b6637f764de54b29e4e07:
+    resolution: {tarball: https://codeload.github.com/init4tech/signet-sol/tar.gz/202c882d718a29a8f85b6637f764de54b29e4e07}
+    version: 0.0.0
 
   simple-swizzle@0.2.4:
     resolution: {integrity: sha512-nAu1WFPQSMNr2Zn9PGSZK9AGn4t/y97lEm+MXTtUDwfP0ksAIX4nO+6ruD9Jwut4C49SB1Ws+fbXsm/yScWOHw==}
@@ -6326,6 +6337,8 @@ snapshots:
   shell-quote@1.8.3: {}
 
   siginfo@2.0.0: {}
+
+  signet-sol@https://codeload.github.com/init4tech/signet-sol/tar.gz/202c882d718a29a8f85b6637f764de54b29e4e07: {}
 
   simple-swizzle@0.2.4:
     dependencies:

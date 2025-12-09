@@ -39,6 +39,7 @@ catalog:
   ox: ^0.9.17
   react: ^19.2.1
   react-dom: ^19.2.1
+  signet-sol: github:init4tech/signet-sol
   tailwind-merge: ^3.4.0
   tailwindcss: ^4.1.17
   tempo.ts: ~0.10.5

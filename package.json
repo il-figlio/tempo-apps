@@ -29,5 +29,8 @@
 			"onFail": "download"
 		}
 	},
-	"packageManager": "pnpm@10.25.0"
+	"packageManager": "pnpm@10.25.0",
+	"dependencies": {
+		"signet-sol": "catalog:"
+	}
 }
