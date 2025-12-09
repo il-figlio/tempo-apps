@@ -1,6 +1,6 @@
 import { env } from 'cloudflare:workers'
 import { zValidator } from '@hono/zod-validator'
-import { Hono } from 'hono'
+import { type Context, Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { tempo } from 'tempo.ts/chains'
 import { Handler } from 'tempo.ts/server'
@@ -15,7 +15,7 @@ const app = new Hono()
 app.use(
 	'*',
 	cors({
-		origin: (origin) => {
+		origin: (origin: string | undefined) => {
 			if (env.ALLOWED_ORIGINS === '*') return '*'
 			if (origin && env.ALLOWED_ORIGINS.includes(origin)) return origin
 			return null
@@ -35,8 +35,11 @@ app.get(
 			blockTimestampTo: z.optional(z.coerce.number()),
 		}),
 	),
-	async (c) => {
-		const { blockTimestampFrom, blockTimestampTo } = c.req.valid('query')
+	async (c: Context) => {
+		const { blockTimestampFrom, blockTimestampTo } = c.req.valid<{
+			blockTimestampFrom?: number
+			blockTimestampTo?: number
+		}>('query')
 		const account = privateKeyToAccount(
 			env.SPONSOR_PRIVATE_KEY as `0x${string}`,
 		)
@@ -50,12 +53,12 @@ app.get(
 	},
 )
 
-app.all('*', rateLimitMiddleware, async (c) => {
+app.all('*', rateLimitMiddleware, async (c: Context) => {
 	const handler = Handler.feePayer({
 		account: privateKeyToAccount(env.SPONSOR_PRIVATE_KEY as `0x${string}`),
 		chain: tempo({ feeToken: '0x20c0000000000000000000000000000000000001' }),
 		transport: http(env.TEMPO_RPC_URL),
-		async onRequest(request) {
+		async onRequest(request: Request) {
 			console.log(`Sponsoring transaction: ${request.method}`)
 		},
 	})

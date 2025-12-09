@@ -31,12 +31,12 @@ export async function getUsage(
 ) {
 	const query = QB.withSignatures([TRANSFER_SIGNATURE])
 		.selectFrom('transfer')
-		.select((eb) => [
-			eb.fn.sum('tokens').as('total_spent'),
-			sql<number>`max(transfer.block_timestamp)`.as('ending_at'),
-			sql<number>`min(transfer.block_timestamp)`.as('starting_at'),
-			eb.fn.count('tx_hash').as('n_transactions'),
-		])
+		.select((eb) => ({
+			total_spent: eb.fn.sum('tokens').as('total_spent'),
+			ending_at: sql<number>`max(transfer.block_timestamp)`.as('ending_at'),
+			starting_at: sql<number>`min(transfer.block_timestamp)`.as('starting_at'),
+			n_transactions: eb.fn.count('tx_hash').as('n_transactions'),
+		}))
 		.where('chain', '=', tempo.id)
 		.where('from', '=', feePayerAddress)
 		.where('to', '=', FEE_MANAGER_CONTRACT)
@@ -55,7 +55,12 @@ export async function getUsage(
 			),
 		)
 
-	const result = await query.executeTakeFirst()
+	const result = await query.executeTakeFirst<{
+		total_spent?: number | string | bigint
+		ending_at?: number
+		starting_at?: number
+		n_transactions?: number
+	}>()
 
 	const feesPaid = result?.total_spent ? BigInt(result.total_spent) : 0n
 
