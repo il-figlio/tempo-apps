@@ -1,17 +1,13 @@
 {
-	"name": "service-proxy",
-	"type": "module",
-	"scripts": {
-		"dev": "wrangler dev",
-		"deploy": "wrangler deploy",
-		"check:types": "tsgo --project tsconfig.json",
-		"gen:types": "test -f .env || cp .env.example .env; wrangler types"
-	},
-	"dependencies": {
-		"hono": "catalog:"
-	},
-	"devDependencies": {
-		"@cloudflare/workers-types": "catalog:",
-		"wrangler": "catalog:"
-	}
+  "name": "service-proxy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo \"noop dev\"",
+    "deploy": "echo \"noop deploy\"",
+    "check:types": "tsgo --project tsconfig.json",
+    "gen:types": "echo \"noop types\""
+  },
+  "dependencies": {},
+  "devDependencies": {}
 }
