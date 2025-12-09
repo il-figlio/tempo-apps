@@ -1,36 +1,39 @@
 {
-	"name": "@tempo/apps",
-	"private": true,
-	"type": "module",
-	"workspaces": [
-		"apps/*"
-	],
-	"scripts": {
-		"build": "pnpm -r build",
-		"deploy": "pnpm -r deploy",
-		"dev:explorer": "pnpm --filter explorer dev",
-		"dev:sponsor": "pnpm --filter tempo-sponsor dev",
-		"check": "pnpm check:biome && pnpm check:types",
-		"check:biome": "biome check --write --unsafe",
-		"check:types": "pnpm -r check:types",
-		"gen:types": "pnpm -r gen:types",
-		"postinstall": "pnpm -r postinstall || true",
-		"preview": "pnpm -r preview"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "catalog:",
-		"@typescript/native-preview": "^7.0.0-dev.20251209.1",
-		"typescript": "^5.9.3"
-	},
-	"devEngines": {
-		"runtime": {
-			"name": "node",
-			"version": "24.11.1",
-			"onFail": "download"
-		}
-	},
-	"packageManager": "pnpm@10.25.0",
-	"dependencies": {
-		"signet-sol": "catalog:"
-	}
+  "name": "@tempo/apps",
+  "private": true,
+  "type": "module",
+  "pnpm": {
+    "overrides": {
+      "wrangler": "npm:@cloudflare/wrangler-miniflare@0.0.1",
+      "@cloudflare/workerd-*": "0.0.1"
+    }
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "deploy": "pnpm -r deploy",
+    "dev:explorer": "pnpm --filter explorer dev",
+    "dev:sponsor": "pnpm --filter tempo-sponsor dev",
+    "check": "pnpm check:biome && pnpm check:types",
+    "check:biome": "biome check --write --unsafe",
+    "check:types": "pnpm -r check:types",
+    "gen:types": "pnpm -r gen:types",
+    "postinstall": "pnpm -r postinstall",
+    "preview": "pnpm -r preview"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@typescript/native-preview": "^7.0.0-dev.20251209.1",
+    "typescript": "^5.9.3"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.11.1",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@10.25.0"
 }
