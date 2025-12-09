@@ -1,15 +1,27 @@
 {
-  "name": "fee-payer",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "echo \"noop dev\"",
-    "deploy": "echo \"noop deploy\"",
-    "check:types": "tsgo --project tsconfig.json",
-    "gen:types": "echo \"noop types\"",
-    "postinstall": "echo \"noop postinstall\"",
-    "tail": "echo \"noop tail\""
-  },
-  "dependencies": {},
-  "devDependencies": {}
+	"name": "fee-payer",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "echo \"noop dev\"",
+		"deploy": "echo \"noop deploy\"",
+		"check:types": "tsgo --project tsconfig.json",
+		"gen:types": "echo \"noop types\"",
+		"postinstall": "echo \"noop postinstall\"",
+		"tail": "echo \"noop tail\""
+	},
+	"dependencies": {
+		"@hono/zod-validator": "catalog:",
+		"hono": "catalog:",
+		"idxs": "catalog:",
+		"kysely": "catalog:",
+		"ox": "catalog:",
+		"tempo.ts": "catalog:",
+		"viem": "catalog:",
+		"zod": "catalog:"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "catalog:",
+		"typescript": "catalog:"
+	}
 }
