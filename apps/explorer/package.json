@@ -1,68 +1,28 @@
 {
-	"name": "explorer",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"build": "vite build",
-		"check": "pnpm check:biome && pnpm check:types",
-		"check:biome": "biome check --write --unsafe",
-		"check:types": "tsgo --project tsconfig.json --noEmit",
-		"check:types:test": "tsc --project tsconfig.test.json --noEmit",
-		"deploy": "pnpm build && wrangler deploy",
-		"dev": "VITE_ENABLE_DEMO=true vite dev --port 3000",
-		"gen:tokens-index": "node --experimental-strip-types --env-file=.env scripts/generate-tokens-index.ts",
-		"gen:types": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler types on vercel'; exit 0; else test -f .env || cp .env.example .env; wrangler types; fi",
-		"postinstall": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler postinstall on vercel'; pnpm build; else pnpm gen:types && pnpm build; fi",
-		"preview": "vite preview",
-		"test": "vitest"
-	},
-	"dependencies": {
-		"@shazow/whatsabi": "catalog:",
-		"@tailwindcss/vite": "catalog:",
-		"@tanstack/query-async-storage-persister": "catalog:",
-		"@tanstack/react-query": "catalog:",
-		"@tanstack/react-query-persist-client": "catalog:",
-		"@tanstack/react-router": "catalog:",
-		"@tanstack/react-router-ssr-query": "catalog:",
-		"@tanstack/react-start": "catalog:",
-		"@tanstack/router-plugin": "catalog:",
-		"abitype": "catalog:",
-		"cva": "catalog:",
-		"idxs": "catalog:",
-		"ox": "catalog:",
-		"react": "catalog:",
-		"react-dom": "catalog:",
-		"tailwind-merge": "catalog:",
-		"tailwindcss": "catalog:",
-		"tempo.ts": "catalog:",
-		"viem": "catalog:",
-		"wagmi": "catalog:",
-		"zod": "catalog:"
-	},
-	"devDependencies": {
-		"@cloudflare/puppeteer": "catalog:",
-		"@cloudflare/vite-plugin": "catalog:",
-		"@cloudflare/vitest-pool-workers": "catalog:",
-		"@iconify/json": "catalog:",
-		"@svgr/core": "catalog:",
-		"@svgr/plugin-jsx": "catalog:",
-		"@tanstack/devtools-vite": "catalog:",
-		"@tanstack/react-devtools": "catalog:",
-		"@tanstack/react-query-devtools": "catalog:",
-		"@tanstack/react-router-devtools": "catalog:",
-		"@total-typescript/ts-reset": "^0.6.1",
-		"@types/node": "catalog:",
-		"@types/react": "catalog:",
-		"@types/react-dom": "catalog:",
-		"@vitejs/plugin-react": "catalog:",
-		"eruda": "catalog:",
-		"tw-animate-css": "catalog:",
-		"typed-query-selector": "catalog:",
-		"unplugin-icons": "catalog:",
-		"vite": "catalog:",
-		"vite-plugin-devtools-json": "^1.0.0",
-		"vite-tsconfig-paths": "catalog:",
-		"vitest": "catalog:",
-		"wrangler": "catalog:"
-	}
+  "name": "explorer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "check": "pnpm check:biome && pnpm check:types",
+    "check:biome": "biome check --write --unsafe",
+    "check:types": "tsgo --project tsconfig.json --noEmit",
+    "check:types:test": "tsc --project tsconfig.test.json --noEmit",
+    "deploy": "pnpm build && wrangler deploy",
+    "dev": "VITE_ENABLE_DEMO=true vite dev --port 3000",
+    "gen:tokens-index": "node --experimental-strip-types --env-file=.env scripts/generate-tokens-index.ts",
+
+    "gen:types": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler types on vercel'; exit 0; else test -f .env || cp .env.example .env; wrangler types; fi",
+
+    "postinstall": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler postinstall on vercel'; pnpm build; else pnpm gen:types && pnpm build; fi",
+
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "…": "catalog:"
+  },
+  "devDependencies": {
+    "…": "catalog:"
+  }
 }

@@ -1,34 +1,27 @@
 {
-	"name": "fee-payer",
-	"private": true,
-	"scripts": {
-		"build": "echo 'noop'",
-		"check": "pnpm check:biome && pnpm check:types",
-		"check:biome": "biome check --write .",
-		"check:types": "tsgo --project tsconfig.json --noEmit",
-		"dev": "wrangler dev",
-		"dev:playground": "pnpm --filter fee-payer-playground dev",
-		"deploy": "wrangler deploy",
-		"deploy:privy": "wrangler deploy --env privy",
-		"format": "biome format --write .",
-		"gen:types": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler types on vercel'; exit 0; else test -f .env || cp .env.example .env; wrangler types; fi",
-		"postinstall": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler postinstall on vercel'; exit 0; else pnpm gen:types; fi",
-		"tail": "wrangler tail"
-	},
-	"dependencies": {
-		"@hono/zod-validator": "catalog:",
-		"hono": "catalog:",
-		"idxs": "catalog:",
-		"kysely": "catalog:",
-		"ox": "catalog:",
-		"tempo.ts": "catalog:",
-		"viem": "catalog:",
-		"zod": "catalog:"
-	},
-	"devDependencies": {
-		"@cloudflare/workers-types": "catalog:",
-		"@types/node": "catalog:",
-		"typescript": "catalog:",
-		"wrangler": "catalog:"
-	}
+  "name": "fee-payer",
+  "private": true,
+  "scripts": {
+    "build": "echo 'noop'",
+    "check": "pnpm check:biome && pnpm check:types",
+    "check:biome": "biome check --write .",
+    "check:types": "tsgo --project tsconfig.json --noEmit",
+    "dev": "wrangler dev",
+    "dev:playground": "pnpm --filter fee-payer-playground dev",
+    "deploy": "wrangler deploy",
+    "deploy:privy": "wrangler deploy --env privy",
+
+    "gen:types": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler types on vercel'; exit 0; else test -f .env || cp .env.example .env; wrangler types; fi",
+
+    "postinstall": "if [ \"$CI\" = \"true\" ]; then echo 'skipping wrangler postinstall on vercel'; exit 0; else pnpm gen:types; fi",
+
+    "format": "biome format --write .",
+    "tail": "wrangler tail"
+  },
+  "dependencies": {
+    "…": "catalog:"
+  },
+  "devDependencies": {
+    "…": "catalog:"
+  }
 }
